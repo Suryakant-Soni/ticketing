@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
-import { validateResult, BadRequestError } from '@sktickets1/common';
+import { validateRequest, BadRequestError } from '@sktickets1/common';
 
 // local files
 
@@ -19,7 +19,7 @@ router.post(
       .notEmpty()
       .withMessage('you must supply a password'),
   ],
-  validateResult,
+  validateRequest,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const existingUser = await User.findOne({ email });

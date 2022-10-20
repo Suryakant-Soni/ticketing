@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { requireAuth, validateResult } from '@sktickets1/common';
+import { requireAuth, validateRequest } from '@sktickets1/common';
 import { Ticket } from '../../models/ticket';
 import { NotFoundError } from '@sktickets1/common';
 const router = express.Router();

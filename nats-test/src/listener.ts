@@ -11,13 +11,5 @@ const stan = nats.connect('ticketing', randomBytes(4).toString('hex'), {
 stan.on('connect', () => {
   console.log('Listener connected to NATS');
 
-  stan.on('close', () => {
-    console.log('NATS connection closed!');
-    process.exit();
-  });
-
   new TicketCreatedListener(stan).listen();
 });
-
-process.on('SIGUSR2', () => stan.close());
-process.on('SIGTERM', () => stan.close());
