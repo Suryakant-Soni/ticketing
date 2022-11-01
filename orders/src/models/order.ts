@@ -1,6 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 import { OrderStatus } from '@sktickets1/common';
 import { TicketDoc } from './ticket';
+// import { }
 
 export { OrderStatus };
 
@@ -16,6 +17,7 @@ interface OrderDoc extends mongoose.Document {
     status: OrderStatus;
     expiresAt: Date;
     ticket: TicketDoc;
+    version: number;
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
